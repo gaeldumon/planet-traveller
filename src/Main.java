@@ -12,7 +12,7 @@ public class Main {
         Planet uranus = new Planet("Uranus", 2_582_000_000L, 10.5, true);
         Planet neptune = new Planet("Neptune", 4_305_000_000L, 13.3, true);
 
-        Planet[] planets = { mercury, venus, earth, mars, jupiter, saturn, uranus, neptune };
+        Planet[] planets = {mercury, venus, earth, mars, jupiter, saturn, uranus, neptune};
 
         Screen screen = new Screen();
         screen.launchMenu(planets);
