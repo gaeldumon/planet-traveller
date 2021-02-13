@@ -1,15 +1,19 @@
-import java.lang.reflect.Array;
-
 public class Screen {
 
-    public void launchMenu(Planet[] planets) {
+    public void launchMenu(Planet[] planets, Transportation[] transportations) {
         System.out.println("||--------------------------------------||");
         System.out.println("||**** INTERPLANETARY TRAVEL SYSTEM ****||");
         System.out.println("||--------------------------------------||");
-        System.out.println("AVAILABLE DESTINATIONS :");
+        System.out.println("\nAVAILABLE DESTINATIONS :");
 
         for (int i = 0; i < planets.length; i++) {
             System.out.printf("%s\t--> press %d\n", planets[i].getName(), i);
+        }
+
+        System.out.println("\nAVAILABLE TRANSPORTATIONS :");
+
+        for (int i = 0; i < transportations.length; i++) {
+            System.out.printf("%s\t--> press %d\n", transportations[i].getLabel(), i);
         }
     }
 

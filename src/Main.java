@@ -11,11 +11,13 @@ public class Main {
         Planet saturn = new Planet("Saturn", 1_195_000_000L, 11.2, true);
         Planet uranus = new Planet("Uranus", 2_582_000_000L, 10.5, true);
         Planet neptune = new Planet("Neptune", 4_305_000_000L, 13.3, true);
-
         Planet[] planets = {mercury, venus, earth, mars, jupiter, saturn, uranus, neptune};
 
+        Transportation defaultShip = new Transportation("Voyager 1 (NASA)", 30_274_560);
+        Transportation[] transportations = {defaultShip};
+
         Screen screen = new Screen();
-        screen.launchMenu(planets);
+        screen.launchMenu(planets, transportations);
 
         Scanner sc = new Scanner(System.in);
 
@@ -25,7 +27,7 @@ public class Main {
         while (userReady.toLowerCase().equals("y")) {
 
             screen.askUser();
-            // TODO : Put all this in askUser
+
             System.out.println("\nENTER NAME -> ");
             String username = sc.nextLine();
 
@@ -36,10 +38,19 @@ public class Main {
             int weight = sc.nextInt();
 
             System.out.println("\nENTER DESTINATION -> ");
-            int destination = sc.nextInt();
-            //********************************
+            int destinationChoice = sc.nextInt();
 
-            Traveller traveller = new Traveller(username, age, weight, planets[destination], earth);
+            System.out.println("\nENTER TRANSPORTATION -> ");
+            int transportChoice = sc.nextInt();
+
+            Traveller traveller = new Traveller(
+                    username,
+                    age,
+                    weight,
+                    planets[destinationChoice],
+                    earth,
+                    transportations[transportChoice]
+            );
 
             screen.generateOutput(traveller);
 

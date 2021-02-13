@@ -5,12 +5,11 @@ public class Traveller {
     private final int weightOnDestination;
     private final int ageOnDestination;
 
-    public Traveller(String name, int age, int weight, Planet destination, Planet departure) {
+    public Traveller(String name, int age, int weight, Planet destination, Planet departure, Transportation transportation) {
         this.name = name;
         this.destination = destination;
         this.weightOnDestination = (int) ((weight * this.destination.getGravity()) / departure.getGravity());
-        int shipSpeed = 30_274_560;
-        this.ageOnDestination = (int) (age + (this.destination.getEarthDistance() / shipSpeed));
+        this.ageOnDestination = (int) (age + (this.destination.getEarthDistance() / transportation.getSpeed()));
     }
 
     public String getName() {
