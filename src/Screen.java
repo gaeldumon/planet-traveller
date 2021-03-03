@@ -23,9 +23,10 @@ public class Screen {
 
     public void generateOutput(Traveller traveller) {
         System.out.printf(
-                "\nTRAVELLER : %s IS GOING TO : %s.\nPROCESSING...\n",
+                "\nTRAVELLER : %s IS GOING TO : %s. TRAVEL DURATION : %s year(s)\nPROCESSING...\n",
                 traveller.getName(),
-                traveller.getDestination().getName()
+                traveller.getDestination().getName(),
+                traveller.getTravelDuration()
         );
 
         System.out.printf("\nAt your arrival on %s you will weight %d kg and you will be %d years old.\n",

@@ -1,17 +1,36 @@
 public class Transportation {
+    /**
+     * Name of the transportation/where does it come from
+     */
     private final String label;
-    private final int speed;
+    /**
+     * Transportation speed in km per second
+     */
+    private final double kms;
+    /**
+     * Transportation speed in km per year
+     */
+    private final double kmy;
 
-    public Transportation(String label, int speed) {
+    /**
+     * @param label Name of the transportation/where it is from
+     * @param kms   Speed of the transportation in km per second
+     */
+    public Transportation(String label, double kms) {
         this.label = label;
-        this.speed = speed;
+        this.kms = kms;
+        this.kmy = this.kms * 3600 * 24 * 365;
     }
 
     public String getLabel() {
         return label;
     }
 
-    public int getSpeed() {
-        return speed;
+    public double getKms() {
+        return kms;
+    }
+
+    public double getKmy() {
+        return kmy;
     }
 }

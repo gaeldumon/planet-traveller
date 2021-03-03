@@ -1,15 +1,19 @@
-
 public class Traveller {
     private final String name;
     private final Planet destination;
     private final int weightOnDestination;
     private final int ageOnDestination;
+    /**
+     * Duration of travel to chosen destination, in year
+     */
+    private final double travelDuration;
 
     public Traveller(String name, int age, int weight, Planet destination, Planet departure, Transportation transportation) {
         this.name = name;
         this.destination = destination;
         this.weightOnDestination = (int) ((weight * this.destination.getGravity()) / departure.getGravity());
-        this.ageOnDestination = (int) (age + (this.destination.getEarthDistance() / transportation.getSpeed()));
+        this.travelDuration = this.destination.getEarthDistance() / transportation.getKmy();
+        this.ageOnDestination = (int) ((this.travelDuration >= 1) ? (age + this.travelDuration) : age);
     }
 
     public String getName() {
@@ -26,5 +30,9 @@ public class Traveller {
 
     public int getAgeOnDestination() {
         return ageOnDestination;
+    }
+
+    public double getTravelDuration() {
+        return travelDuration;
     }
 }
