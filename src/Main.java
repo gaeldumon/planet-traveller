@@ -11,13 +11,14 @@ public class Main {
         Planet saturn = new Planet("Saturn", 1_277_566_000L, 11.2, true);
         Planet uranus = new Planet("Uranus", 2_722_681_000L, 10.5, true);
         Planet neptune = new Planet("Neptune", 4_353_298_000L, 13.3, true);
-        Planet[] planets = {mercury, venus, earth, mars, jupiter, saturn, uranus, neptune};
+        Destination[] destinations = {mercury, venus, earth, mars, jupiter, saturn, uranus, neptune};
 
         Transportation defaultShip = new Transportation("Apollo 11 Spacecraft (NASA)", 11.03);
-        Transportation[] transportations = {defaultShip};
+        Transportation tesla = new Transportation("Tesla Model S", 0.036);
+        Transportation[] transportations = {defaultShip, tesla};
 
-        Screen screen = new Screen();
-        screen.launchMenu(planets, transportations);
+        Screen screen = new Screen(destinations, transportations);
+        screen.launchMenu();
 
         Scanner sc = new Scanner(System.in);
 
@@ -37,22 +38,30 @@ public class Main {
             System.out.println("\nENTER WEIGHT (in KG) -> ");
             int weight = sc.nextInt();
 
-            System.out.println("\nENTER DESTINATION -> ");
-            int destinationChoice = sc.nextInt();
+            int destinationChoice = -1;
+            while (destinationChoice < 0 || destinationChoice >= destinations.length) {
+                System.out.println("\nENTER DESTINATION -> ");
+                destinationChoice = sc.nextInt();
+            }
 
-            System.out.println("\nENTER TRANSPORTATION -> ");
-            int transportChoice = sc.nextInt();
+            int transportChoice = -1;
+            while (transportChoice < 0 || transportChoice >= transportations.length) {
+                System.out.println("\nENTER TRANSPORTATION -> ");
+                transportChoice = sc.nextInt();
+            }
 
             Traveller traveller = new Traveller(
                     username,
                     age,
                     weight,
-                    planets[destinationChoice],
+                    destinations[destinationChoice],
                     earth,
                     transportations[transportChoice]
             );
 
-            screen.generateOutput(traveller);
+            screen.setTraveller(traveller);
+
+            screen.generateOutput();
 
             System.out.println("\nSimulate another travel ? (y/n)");
             sc.nextLine();
