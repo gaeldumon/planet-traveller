@@ -1,36 +1,33 @@
 public class Transportation {
-    /**
-     * Name of the transportation/where does it come from
-     */
     private final String label;
-    /**
-     * Transportation speed in km per second
-     */
-    private final double kms;
-    /**
-     * Transportation speed in km per year
-     */
-    private final double kmy;
+    private final double velocity;
 
     /**
-     * @param label Name of the transportation/where it is from
-     * @param kms   Speed of the transportation in km per second
+     * @param label    Name of the transportation/where it is from
+     * @param velocity Speed of the transportation in km per second
      */
-    public Transportation(String label, double kms) {
+    public Transportation(String label, double velocity) {
         this.label = label;
-        this.kms = kms;
-        this.kmy = this.kms * 3600 * 24 * 365;
+        this.velocity = velocity;
     }
 
     public String getLabel() {
         return label;
     }
 
-    public double getKms() {
-        return kms;
-    }
+    public double getVelocity(Unit unit) {
+        double v = 0;
 
-    public double getKmy() {
-        return kmy;
+        if (unit == Unit.KM_PER_SEC) {
+            v = this.velocity;
+        } else if (unit == Unit.KM_PER_HOUR) {
+            v = this.velocity * 3600;
+        } else if (unit == Unit.KM_PER_DAY) {
+            v = this.velocity * 3600 * 24;
+        } else if (unit == Unit.KM_PER_YEAR) {
+            v = this.velocity * 3600 * 24 * 365;
+        }
+
+        return v;
     }
 }

@@ -39,7 +39,7 @@ public class Screen {
                 "\nTRAVELLER : %s IS GOING TO : %s. TRAVEL DURATION : %s year(s)\nPROCESSING...\n",
                 this.traveller.getName(),
                 this.traveller.getDestination().getName(),
-                this.traveller.getTravelDuration()
+                this.traveller.getTravelDuration(Unit.YEAR)
         );
 
         System.out.printf("\nAt your arrival on %s you will weight %d kg and you will be %d years old.\n",

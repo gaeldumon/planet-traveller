@@ -1,5 +1,8 @@
 import java.util.Scanner;
 
+/**
+ * @see "https://cnes.fr/fr/web/CNES-fr/7626-le-systeme-solaire-en-version-interactive.php"
+ */
 public class Main {
     public static void main(String[] args) {
 
@@ -11,9 +14,10 @@ public class Main {
         Planet saturn = new Planet("Saturn", 1_277_566_000L, 11.2, true);
         Planet uranus = new Planet("Uranus", 2_722_681_000L, 10.5, true);
         Planet neptune = new Planet("Neptune", 4_353_298_000L, 13.3, true);
-        Destination[] destinations = {mercury, venus, earth, mars, jupiter, saturn, uranus, neptune};
+        Moon moon = new Moon("The Moon", 384_400L, 1.62, earth);
+        Destination[] destinations = {mercury, venus, earth, moon, mars, jupiter, saturn, uranus, neptune};
 
-        Transportation defaultShip = new Transportation("Apollo 11 Spacecraft (NASA)", 11.03);
+        Transportation defaultShip = new Transportation("Apollo 10 Spacecraft (NASA)", 11.03);
         Transportation tesla = new Transportation("Tesla Model S", 0.036);
         Transportation[] transportations = {defaultShip, tesla};
 
