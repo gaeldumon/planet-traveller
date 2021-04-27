@@ -28,13 +28,10 @@ public class Traveller {
     }
 
     public int getAgeOnDestination() {
-        int ageOnDestination;
-        if (this.getTravelDuration(Unit.YEAR) >= 1) {
-            ageOnDestination = (int) (this.currentAge + this.getTravelDuration(Unit.YEAR));
-        } else {
-            ageOnDestination = this.currentAge;
+        if (this.getTravelDuration(Unit.YEAR) <= 1) {
+            return this.currentAge;
         }
-        return ageOnDestination;
+        return (int) (this.currentAge + this.getTravelDuration(Unit.YEAR));
     }
 
     public double getTravelDuration(Unit unit) {
